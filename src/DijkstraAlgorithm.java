@@ -53,18 +53,19 @@ public class DijkstraAlgorithm<T> {
         TreeSet<DijkstraAlgorithm<T>.pair> set = new TreeSet<>();
         set.add(new pair(src,0));
         while(!set.isEmpty())
-        {
+        {   // pick minimum cost nod e, update its neighbors and remove it
             DijkstraAlgorithm.pair parent= set.first();
             int nodeDist=distances.get(parent.data);
-            for( DijkstraAlgorithm.pair nbrs: vertices.get(parent.data) )
+            for( DijkstraAlgorithm<T>.pair nbrs: vertices.get(parent.data) )
             {
                 if(nodeDist+ nbrs.cost<=distances.get(nbrs.data))
                 {
-                    distances.put((T) nbrs.data,nodeDist+nbrs.cost);
+                    distances.put( nbrs.data,nodeDist+nbrs.cost);
                     if(set.contains(nbrs)) {
                         set.remove(nbrs);
-                    }    set.add( new pair( (T)nbrs.data,nodeDist+nbrs.cost));
-                                    }
+                    }
+                    set.add( new pair( nbrs.data,nodeDist+nbrs.cost));
+                }
             }
             set.remove(parent);
         }
