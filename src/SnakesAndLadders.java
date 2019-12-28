@@ -45,8 +45,8 @@ public class SnakesAndLadders {
                     addEdge(i, i + dice + board[i + dice], false);
             }
 
-        }
-        System.out.println(vertices);
+      }
+       // System.out.println(vertices);
             int k=0;
         int [] cost= new int [cells+1];
         int [] parents=new int [ cells+1];
@@ -55,6 +55,7 @@ public class SnakesAndLadders {
        queue.add(null);
             HashSet<Integer> visited= new HashSet<>();
             visited.add(0);
+            parents[0]=-1;
             while (queue.size()>1)
             {
                 Integer v =queue.remove();
@@ -82,10 +83,9 @@ public class SnakesAndLadders {
             }
             System.out.println("Minimum  throws is "+cost[cells]);
             int dest=cells;
-        System.out.print(dest+" <-- ");
-            while( dest!=0)
+            while( dest>=0)
             {
-                System.out.print(parents[dest]+" <-- " );
+                System.out.print(dest+" <-- " );
                 dest=parents[dest];
 
             }

@@ -48,7 +48,7 @@ public class Graphs<T> {
 
     }
 
-    public void DFS(T data)
+    public void DFS(T data)//O(V+E) complexity
     {
     HashSet< Vertex> visited= new HashSet<>();
         System.out.println();
@@ -69,7 +69,7 @@ public class Graphs<T> {
         }
     }
     public void BFS( T data) {
-
+//O(V+E) complexity
         Vertex start = findVertex(data);
         HashSet<Vertex> visited = new HashSet<>();
         visited.add(start);
@@ -140,6 +140,17 @@ public class Graphs<T> {
             }
             System.out.println();
         }        System.out.println();
+    }
+    public int connectedComponents()
+    {       int k=0;
+        HashSet<Vertex> visited= new HashSet<>();
+        for( Vertex v : vertices)
+        {   if(!visited.contains(v)) {
+            DFS(v, visited);
+            k++;
+        }
+        }
+        return k;
     }
 
 }
