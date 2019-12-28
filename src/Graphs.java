@@ -1,6 +1,5 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Graphs<T> {
 
@@ -68,6 +67,79 @@ public class Graphs<T> {
             if(!visited.contains(v))
             DFS(v,visited);
         }
+    }
+    public void BFS( T data) {
+
+        Vertex start = findVertex(data);
+        HashSet<Vertex> visited = new HashSet<>();
+        visited.add(start);
+        Queue<Vertex> queue = new LinkedList<>();
+        queue.add(start);
+        System.out.println("******************");
+        while (queue.size() > 0) {
+            Vertex v= queue.remove();
+            System.out.print(v.data+"   ");
+            for( Vertex nbrs: v.neighbors)
+                {
+                    if(!visited.contains(nbrs)) {
+                        queue.add(nbrs);
+                        visited.add(nbrs);
+                    }
+                }
+        }
+
+        System.out.println("\n *****************");
+    }
+    public void singleSourceShortestPath( T data)
+    {
+        HashMap< Integer, ArrayList<T>> sssp= new HashMap<>();
+        Vertex source=findVertex(data);
+        HashSet<Vertex > visited= new HashSet<>();
+        visited.add( source);
+        Queue< Vertex > queue= new LinkedList<>();
+        queue.add(source);
+        queue.add(null);
+        int depth=0;
+        while(queue.size()>1)
+        {
+            Vertex v= queue.remove();
+            if(v!=null)
+            {
+                if( sssp.containsKey( depth))
+                {
+                    sssp.get(depth).add(v.data);
+                }
+                else
+                {
+                    sssp.put(depth, new ArrayList<>());
+                    sssp.get(depth).add(v.data);
+
+                }
+                //System.out.println(v.data+" at depth "+ depth);
+                for( Vertex u: v.neighbors)
+                {
+                    if(!visited.contains(u))
+                    {
+                        visited.add(u);
+                        queue.add(u);
+                    }
+                }
+            }
+            else
+            {
+                queue.add(null);
+                depth++;
+            }
+        }
+        for(Map.Entry<Integer, ArrayList<T>> depthlist : sssp.entrySet())
+        {
+            System.out.print(" AT DEPTH "+ depthlist.getKey()+" -> ");
+            for( T u: depthlist.getValue())
+            {
+                System.out.print(u+" , ");
+            }
+            System.out.println();
+        }        System.out.println();
     }
 
 }

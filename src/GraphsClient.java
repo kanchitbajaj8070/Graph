@@ -8,18 +8,23 @@ public class GraphsClient {
         graph .addVertex(3);
         graph.addVertex(4);
         graph.addVertex(5);
-        graph.addVertex(6);
+        graph.addVertex(0);
         /**
-         * 1--=2
-         * |    \
-         * 3--4--5--6
+         * 1--=0
+         * |   |
+         * 2---4
+           | /
+            3--5
          */
+        graph.addEdge(1,0,true);
         graph.addEdge(1,2,true);
-        graph.addEdge(1,3,true);
-        graph.addEdge(3,4,true);
-      graph.addEdge(4,5,true);
-      graph.addEdge(5,6,true);
-      graph.addEdge(5,2,true);
+        graph.addEdge(2,4,true);
+      graph.addEdge(4,0,true);
+      graph.addEdge(2,3,true);
+      graph.addEdge(3,4,true);
+      graph.addEdge(3,5,true);
         graph.DFS(1);
+        graph.BFS(1);
+        graph.singleSourceShortestPath(1);
     }
 }
