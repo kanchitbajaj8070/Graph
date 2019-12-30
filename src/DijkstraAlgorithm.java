@@ -88,9 +88,9 @@ public class DijkstraAlgorithm {
     }
 
     private  void dijkstra(DijkstraAlgorithm graph,Integer src, Integer dest) {
-        for (Map.Entry<Integer, LinkedList<DijkstraAlgorithm.pair>> entry : graph.vertices.entrySet()) {
+        for (Map.Entry<Integer, LinkedList<pair>> entry : graph.vertices.entrySet()) {
             System.out.print(entry.getKey() + " -> ");
-            for (DijkstraAlgorithm.pair p : entry.getValue())
+            for (pair p : entry.getValue())
                 System.out.print("(" + p.data + "," + p.cost + ")");
             System.out.println();
         }
@@ -136,7 +136,7 @@ public class DijkstraAlgorithm {
     }
 
  public void dijkstraUsingTreeset(DijkstraAlgorithm graph,Integer src, Integer dest) {
-        for (Map.Entry<Integer, LinkedList<DijkstraAlgorithm.pair>> entry : graph.vertices.entrySet()) {
+        for (Map.Entry<Integer, LinkedList<pair>> entry : graph.vertices.entrySet()) {
             System.out.print(entry.getKey() + " -> ");
             for (DijkstraAlgorithm.pair p : entry.getValue())
                 System.out.print("(" + p.data + "," + p.cost + ")");
