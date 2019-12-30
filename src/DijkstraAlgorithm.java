@@ -160,8 +160,9 @@ public class DijkstraAlgorithm {
                 if(nodeDist+ nbrs.cost<=distances.get(nbrs.data))
                 {
                     distances.put( nbrs.data,nodeDist+nbrs.cost);
-                        if(set.contains(nbrs))
-                            set.remove(nbrs);
+                    pair toremove=(new pair(nbrs.data,distances.get(nbrs.data)));
+                        if(set.contains(toremove))
+                            set.remove(toremove);
                     set.add( new pair( nbrs.data,nodeDist+nbrs.cost));
                     System.out.println(" newly added element is -> "+ nbrs.data+" "+ (nbrs.cost+nodeDist));
                 }

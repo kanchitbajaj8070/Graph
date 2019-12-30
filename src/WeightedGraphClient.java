@@ -30,7 +30,7 @@ public class WeightedGraphClient {
             10
         0--------1
          | \     |
-        6|  5\   |15 ans =19
+        6|  5\   | 15 ans =19
          |     \ |
          2--------3
             4*/
@@ -44,5 +44,19 @@ public class WeightedGraphClient {
         graphKrsuskal.addEdge(1,3,15);
         graphKrsuskal.addEdge(2,3,4);
         graphKrsuskal.kruskal();
+     /*  WeightedGraph graphPrims= new WeightedGraph();
+        for (int i = 0; i <=6 ; i++) {
+            graphPrims.addVertex(i);
+        }
+        graphPrims.addEdge(0,1,2);
+        graphPrims.addEdge(0,3,6);
+        graphPrims.addEdge(1,2,3);
+        graphPrims.addEdge(3,4,8);
+        graphPrims.addEdge(4,5,5);
+        graphPrims.addEdge(2,3,1);
+        graphPrims.addEdge(5,6,9);
+        graphPrims.addEdge(4,6,7);*/
+        graphKrsuskal.primsAlgorithms(0);
+
     }
 }
